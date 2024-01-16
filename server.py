@@ -11,6 +11,8 @@ def render_index_page():
 def emo_detector():
     text_to_analyse = request.args.get("textToAnalyze")
     response = emotion_detector(text_to_analyse)
+    if response["dominant_emotion"] == None:
+        return "Invalid text! Please try again!"
     anger = str(response["anger"])
     disgust = str(response["disgust"])
     fear = str(response["fear"])
